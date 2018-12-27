@@ -2778,7 +2778,10 @@ Google map
 }
 
 @media (max-width: 767px) {
-  /* Navbar */
+  .main-info {
+    font-size: 21px;
+  }
+    /* Navbar */
   .navbar-custom .navbar-nav {
     letter-spacing: 3px;
     margin-top: 1px;
