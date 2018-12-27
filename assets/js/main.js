@@ -1,5 +1,3 @@
-console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55');
-
 /* ---------------------------------------------- /*
  * Preloader
  /* ---------------------------------------------- */
@@ -599,14 +597,14 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
 
         /* ---------------------------------------------- /*
          * Google Map
-         /* ---------------------------------------------- */
+         /* ----------------------------------------------
 
         if($("#map").length == 0 || typeof google == 'undefined') return;
 
         // When the window has finished loading create our google map below
         google.maps.event.addDomListener(window, 'load', init);
 
-        var mkr = new google.maps.LatLng(40.6700, -74.2000);
+        var mkr = new google.maps.LatLng(36.6916749, 137.8405867,17);
         var cntr = (mobileTest) ? mkr : new google.maps.LatLng(40.6700, -73.9400);
 
         function init() {
@@ -844,8 +842,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
                 map: map,
             });
         }
+*/
 
     });
 })(jQuery);
-
-

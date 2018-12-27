@@ -2900,6 +2900,7 @@ Google map
   }
   /* Half-image */
   .side-image-text {
+    padding-top: 70px;
     padding-left: 15px;
     padding-right: 15px;
   }
