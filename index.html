@@ -68,6 +68,11 @@
       height: 100%;
       width: 100%;
       }
+      #google-map-blizzard {
+      height: 100%;
+      width: 100%;
+      }
+
     </style>
 
   </head>
@@ -166,7 +171,7 @@
                     <div class="col-sm-4 col-sm-offset-4">
                       <div class="testimonial-author">
                         <div class="testimonial-caption font-alt">
-                          <div class="testimonial-title"><a href="https://www.facebook.com/STUDIO-902-308944682455025/" style="color:#eee;text-decoration:underline;">@sTUDIO 902<a></div>
+                          <div class="testimonial-title"><a href="https://www.facebook.com/STUDIO-902-308944682455025/" style="color:#eee;text-decoration:underline;">@sTUDIO 902</a></div>
                         </div>
                       </div>
                     </div>
@@ -185,7 +190,10 @@
                         placeId: 'ChIJY_BIx-LR918RcONEc2fmBww',
                         fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
                         };
-
+                        var blizzardRequest = {
+                        placeId: 'ChIJfRUUAozP918RTq8D6N6QGi4',
+                        fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
+                        };
 
                         var map = new google.maps.Map(document.getElementById('google-map'), {
                         center: {lat:36.6916749, lng:137.8405867},
@@ -362,8 +370,203 @@
                         }
                         ]
                         });
+
+                        var blizzardMap = new google.maps.Map(document.getElementById('google-map-blizzard'), {
+                        center: {lat:36.7017095, lng:137.8356904},
+                        zoom: 14,
+                        styles:
+                        [
+                        {
+                        "featureType": "all",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                        "weight": "2.00"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "all",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                        {
+                        "color": "#9c9c9c"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "all",
+                        "elementType": "labels.text",
+                        "stylers": [
+                        {
+                        "visibility": "on"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                        "color": "#f2f2f2"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "landscape",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                        "color": "#ffffff"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "landscape.man_made",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                        "color": "#ffffff"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                        "saturation": -100
+                        },
+                        {
+                        "lightness": 45
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "road",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                        "color": "#eeeeee"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "road",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                        "color": "#7b7b7b"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "road",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                        {
+                        "color": "#ffffff"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                        "visibility": "simplified"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                        {
+                        "color": "#46bcec"
+                        },
+                        {
+                        "visibility": "on"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "water",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                        "color": "#c8d7d4"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                        "color": "#070707"
+                        }
+                        ]
+                        },
+                        {
+                        "featureType": "water",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                        {
+                        "color": "#ffffff"
+                        }
+                        ]
+                        }
+                        ]
+                        });      
+
                         var infowindow = new google.maps.InfoWindow();
-                        var service = new google.maps.places.PlacesService(map);
+                        var blizzardInfowindow = new google.maps.InfoWindow();
+                        var service = new google.maps.places.PlacesService(map);                        
+                        var blizzardService = new google.maps.places.PlacesService(blizzardMap);
+                        
+                        blizzardService.getDetails(blizzardRequest, function (place, status) {
+                        if (status == google.maps.places.PlacesServiceStatus.OK) {
+                        var marker = new google.maps.Marker({
+                        map: blizzardMap,
+                        position: place.geometry.location,
+                        title: "Blizzard"
+                        });
+                        google.maps.event.addListener(marker, 'click', function() {
+                        blizzardInfowindow.setContent('<div><br>' +
+                          '<a href="https://goo.gl/maps/oPVD1Gn5Udr" style="color:blue;"> GO TO Blizzard</a><br>' +
+                          '</div>');
+                        blizzardInfowindow.open(blizzardMap, this);
+                                    });
+                        };});
+
                         service.getDetails(request, function (place, status) {
                         if (status == google.maps.places.PlacesServiceStatus.OK) {
                         var marker = new google.maps.Marker({
@@ -372,8 +575,8 @@
                         title: "STUDIO 902"
                         });
                         google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.setContent('<div><strong>' + 'STUDIO 902' + '</strong><br>' +
-                          '<a href="https://goo.gl/maps/yDpqfHtNyLB2" style="color:blue;"> DANCE!!! </a><br>' +
+                        infowindow.setContent('<div><br>' +
+                          '<a href="https://goo.gl/maps/yDpqfHtNyLB2" style="color:blue;"> Go To Studio902 </a><br>' +
                           '</div>');
                         infowindow.open(map, this);
                                     });
@@ -382,7 +585,7 @@
                         };
                       </script>
                       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS6dj3scKnbmRscrDys16-_8rdBt4qxYg&callback=initMap&libraries=places" async defer></script>
-        </section>
+                    </section>
         <section class="module" id="team">
             <div class="container">
               <div class="row">
@@ -390,7 +593,7 @@
                   <h2 class="module-title font-alt main-info">
                     <p>DAY. 2 </p>
                     <p>2019.1.20 5PM^1AM</p>
-                    <p>@BRIZZARD</p>
+                    <p>@BLIZZARD</p>
                     <p>Entrance ￥1000</p>
                    </h2>
                   </div>
@@ -407,13 +610,13 @@
                       <h2 class="module-title font-alt align-left">CAKRA</h2>
                       <div class="module-subtitle font-serif align-left">天竺</div>
                       <p>2002年にDJとしてのキャリアをスタートし、今年、17年目を迎える。
-                          　2004年にOPEN AIR PARTY「天竺」を始動。
-                          　今年、16年目となった「天竺」は、野外イベント天国である長野県においてアンダーグラウンドミュージックシーンのパイオニアとして君臨している。
-                          　また、DJとしては、サラリーマンの傍ら年間40公演以上をこなし経験を重ねており、Progressive Technoを軸にTribalやTranceを織り交ぜながら徐々にBuild Upするプレイスタイルには定評がある。
-                          　Vinyl（アナログレコード）でのプレイにこだわり、太く、分厚い音でフロアをロックする。
-                          　2016年１月には、盟友Kazuyoshi Shimamura（天竺）がマスタリングした「CAKRA Dj Mix」が、MixcloudのHard Techno部門において世界ランク４位に食い込むなど、レーベルに所属しない日本人としては異例の快挙を遂げた。
-                          　最近、社会の波に押されモヒカンを卒業し、イベント会場では「誰だかわからなかった」などと言われているが、見つけて声をかけると100万ドルの笑顔で応えてくれるだろう。
-                          　生態として、アルコールをこよなく愛しているため、見かけたら乾杯してあげてほしい。</p>
+                        2004年にOPEN AIR PARTY「天竺」を始動。
+                        今年、16年目となった「天竺」は、野外イベント天国である長野県においてアンダーグラウンドミュージックシーンのパイオニアとして君臨している。<br>
+                        また、DJとしては、サラリーマンの傍ら年間40公演以上をこなし経験を重ねており、Progressive Technoを軸にTribalやTranceを織り交ぜながら徐々にBuild Upするプレイスタイルには定評がある。
+                        Vinyl（アナログレコード）でのプレイにこだわり、太く、分厚い音でフロアをロックする。
+                        2016年１月には、盟友Kazuyoshi Shimamura（天竺）がマスタリングした「CAKRA Dj Mix」が、MixcloudのHard Techno部門において世界ランク４位に食い込むなど、レーベルに所属しない日本人としては異例の快挙を遂げた。<br>
+                        最近、社会の波に押されモヒカンを卒業し、イベント会場では「誰だかわからなかった」などと言われているが、見つけて声をかけると100万ドルの笑顔で応えてくれるだろう。
+                        生態として、アルコールをこよなく愛しているため、見かけたら乾杯してあげてほしい。</p>
                           <p><a style="text-decoration: underline;" href="https://www.facebook.com/CAKRA.TENJIKU">facebook</a></p>
                           <p><a style="text-decoration: underline;" href="https://www.facebook.com/tenjiku.nagano">天竺</a></p>
                           <p><a style="text-decoration: underline;" href="https://www.facebook.com/events/369132086999300/">天竺 Spring Festival 2019－Indoor RAVE－</a></p>
@@ -435,7 +638,22 @@
                     </div>
                   </div>
                 </div>  
-              </section>
+              </section>            
+              <section class="module pt-0 pb-0" id="about">
+                  <div class="row position-relative m-0">
+                    <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/tomy.jpg"></div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <h2 class="module-title font-alt align-left">tomy</h2>
+                          <div class="module-subtitle font-serif align-left">MAZE SOUND</div>
+                          <p>10代の頃にRave Cultureに刺激を受け、地元京都にてDJ活動を開始。海外のアーティストとの共演を重ねる中で異文化への好奇心が膨らみ、2008年にLondon に滞在。各国のPartyを旅して周り、ヨーロッパのダンスミュージックとライフスタイルより大きな刺激を受ける。帰国後は、京都を拠点に[ Transcend@Metro ]やWorldで開催されるコアなDance Music Party [ SLEAZE ]などにレギュラー出演している。またFREE PARTY【 ANIMAL BOX 】を自身でオーガナイズし今までになかったフリーアドミッションとゆうスタイルで毎月、クリエイティヴなPartyを開催。これまでにLOCO DICE, DOC MARTIN, DUB FIRE, HERNAN CATTANEO, AUDIO JACK, Tiefschwarz, Tomoki Tamuraなどの世界のトップアーティストと共演し、自身の感性を磨いている。Trance Musicをルーツに持つ彼のDJ PLAYは幻想的な空間に、ロンドンやヨーロッパで培ったファンキーなダンスミュージックを織り交ぜ、Tech House, Deep Houseを軸に自身の世界観を表現している。2012年からは、BerlinよりAlejandro MossoやTrenton Recordのボス、Reynold、またAmsterdamよりRUSH HOURレコードのボス、DJ ANTALらを招くなど、積極的に海外との交流を深めている。2014年からは、京都の新たなMUSIC SPOT、GYPSYの立ち上げに加わり、新世代アーティストを招き、京都の夜をファンキーにすべく活動を続けている。</p>
+                          <p><a style="text-decoration: underline;" href="https://soundcloud.com/dj-tomy/">soundcloud</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+                </section>
             <section class="module pt-0 pb-0" id="about">
                 <div class="row position-relative m-0">
                   <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/gacky.jpg"></div>
@@ -464,6 +682,32 @@
                   </div>
                 </div>  
               </section>
+              <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="assets/images/blizzard.jpg">
+                <div class="pt-140 pb-140">
+                  <ul class="slides">
+                    <li>
+                      <div class="container">
+                        <div class="row">
+                        </div>
+                        <div class="row" style="line-height:300px;">
+                          <div class="col-sm-4 col-sm-offset-4">
+                            <div class="testimonial-author">
+                              <div class="testimonial-caption font-alt">
+                                <div class="testimonial-title"><a href="https://www.instagram.com/blizzardhakuba/" style="color:#eee;text-decoration:underline;">@BLIZZARD</a></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+              <section style="height:100vh">
+                  <div id="google-map-blizzard"></div>
+                </section>
+
+      
       </main>
     <!--
         JavaScripts
