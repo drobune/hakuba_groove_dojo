@@ -295,7 +295,7 @@
         </div>
       </div>
     </section>
-    <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="assets/images/blizzard.jpg">
+    <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="assets/images/concrete.jpg">
       <div class="pt-140 pb-140">
         <ul class="slides">
           <li>
@@ -306,7 +306,7 @@
                 <div class="col-sm-4 col-sm-offset-4">
                   <div class="testimonial-author">
                     <div class="testimonial-caption font-alt">
-                      <div class="testimonial-title"><a href="https://www.instagram.com/blizzardhakuba/" style="color:#eee;text-decoration:underline;">@BLIZZARD</a></div>
+                      <div class="testimonial-title"><a href="https://www.facebook.com/concrete.hakuba/" style="color:#eee;text-decoration:underline;">@Concrete</a></div>
                     </div>
                   </div>
                 </div>
@@ -334,12 +334,12 @@
         fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
       };
       var blizzardRequest = {
-        placeId: 'ChIJfRUUAozP918RTq8D6N6QGi4',
+        placeId: 'ChIJDUEkh1PQ918RutxXGdHtFnM',
         fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
       };
 
       var blizzardMap = new google.maps.Map(document.getElementById('google-map-blizzard'), {
-        center: { lat: 36.7017095, lng: 137.8356904 },
+        center: { lat: 36.6794076, lng: 137.8302671 },
         zoom: 14,
         styles:
           [
@@ -523,11 +523,11 @@
           var marker = new google.maps.Marker({
             map: blizzardMap,
             position: place.geometry.location,
-            title: "Blizzard"
+            title: "Concrete"
           });
           google.maps.event.addListener(marker, 'click', function () {
             blizzardInfowindow.setContent('<div><strong>Day.2 ( 1.20 Sun )</strong><br>' +
-              '<a href="https://goo.gl/maps/oPVD1Gn5Udr" style="color:blue;font-size:medium;"> Go to Blizzard</a><br>' +
+              '<a href="https://goo.gl/maps/ygp7LbCSRhN2" style="color:blue;font-size:medium;"> Go to Concrete</a><br>' +
               '</div>');
             blizzardInfowindow.open(blizzardMap, this);
           });
