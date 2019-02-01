@@ -2773,7 +2773,7 @@ Google map
   /* Half-image */
   .side-image {
     position: relative;
-    height: 300px;
+    height: 60vh;
   }
 }
 
