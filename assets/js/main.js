@@ -601,8 +601,7 @@
                     
             if( scroll <= py || scroll >= py + $(window).height()) {return;}
             $(".zoom div").css({
-                'padding-right': scroll/1000 + 'px',
-                transform: 'scale(' + ( 1.1 + 1.8 - 1.8 * ( (scroll-py) / $(window).height())) + ')',
+                transform: 'scale(' + ( 1.1 + 2.1 - 2.1 * ( (scroll-py) / $(window).height())) + ')'
             });
         });
 
