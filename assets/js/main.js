@@ -72,7 +72,7 @@
          * Set sections backgrounds
          /* ---------------------------------------------- */
 
-        var module = $('.home-section, .module, .module-small, .side-image');
+        var module = $('.home-section, .module, .module-small, .side-image, .slum');
         module.each(function (i) {
             if ($(this).attr('data-background')) {
                 $(this).css('background-image', 'url(' + $(this).attr('data-background') + ')');
@@ -596,14 +596,13 @@
 
         $(window).scroll(function () {
             var scroll = $(window).scrollTop() + $(window).height();
-            var clientRect = $(".zoom img").offset();
+            var clientRect = $(".zoom div").offset();
             var py = clientRect.top ;
+                    
             if( scroll <= py || scroll >= py + $(window).height()) {return;}
-            $(".zoom img").css({
-                transform: 'translate3d(0, -' + (scroll / 1000) + '%, 0) scale(' + ( 1.1 + 1.8 - 1.8 * ( (scroll-py) / $(window).height())) + ')',
-                //Blur suggestion from @janwagner: https://codepen.io/janwagner/ in comments
-                //"-webkit-filter": "blur(" + (scroll/200) + "px)",
-                //filter: "blur(" + (scroll/200) + "px)"
+            $(".zoom div").css({
+                'padding-right': scroll/1000 + 'px',
+                transform: 'scale(' + ( 1.1 + 1.8 - 1.8 * ( (scroll-py) / $(window).height())) + ')',
             });
         });
 

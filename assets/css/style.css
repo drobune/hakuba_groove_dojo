@@ -2919,6 +2919,10 @@ Google map
   .align-left-sm {
     text-align: left;
   }
+
+  .zoom {
+    margin-bottom: 15vh; 
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -2928,4 +2932,16 @@ Google map
   .works-grid-5 .work-item {
     width: 100%;
   }
+}
+
+.zoom {
+  overflow: hidden; 
+  height: 600px; 
+  width: 100%;
+}
+.zoom .slum{
+  height: 600px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
