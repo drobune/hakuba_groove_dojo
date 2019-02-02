@@ -601,7 +601,7 @@
                     
             if( scroll <= py || scroll >= py + $(window).height()) {return;}
             $(".zoom div").css({
-                transform: 'scale(' + ( 1.1 + 2.1 - 2.1 * ( (scroll-py) / $(window).height())) + ')'
+                transform: 'scale(' + ( 1.1 + 1.9 - 1.9 * ( (scroll-py) / $(window).height())) + ')'
             });
         });
 
