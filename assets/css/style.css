@@ -1376,6 +1376,7 @@ General Styles - Owlcarousel
   width: 100%;
   z-index: 0;
   background-size: cover;
+  background-image: url("/assets/images/nhatrang-fhd.png");
 }
 
 .titan-title-size-1 {
@@ -2778,6 +2779,9 @@ Google map
 }
 
 @media (max-width: 767px) {
+  .home-section {
+    background-image: url("/assets/images/nhatrang-sp.png");
+  }
   .main-info {
     font-size: 21px;
   }
