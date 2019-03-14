@@ -594,6 +594,7 @@
 
         });
 
+        /* for slum
         $(window).scroll(function () {
             var scroll = $(window).scrollTop() + $(window).height();
             var clientRect = $(".zoom div").offset();
@@ -604,7 +605,7 @@
                 transform: 'scale(' + ( 1.1 + 1.7 - 1.7 * ( (scroll-py) / $(window).height())) + ')'
             });
         });
-
+        */
 
     });
 })(jQuery);
