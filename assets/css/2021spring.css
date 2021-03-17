@@ -2780,7 +2780,8 @@ Google map
 
 @media (max-width: 767px) {
   .home-section {
-    background-image: url("/assets/images/nhatrang-sp.png");
+    background-image: url("/assets/images/hdg2021spring.jpg");
+    background-size: contain;
   }
   .main-info {
     font-size: 21px;
